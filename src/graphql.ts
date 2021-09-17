@@ -16,6 +16,10 @@ export class Productor {
     id: string;
 }
 
+export class DeleteProductorResponse {
+    deleted: string;
+}
+
 export abstract class IQuery {
     abstract productores(): Nullable<Productor>[] | Promise<Nullable<Productor>[]>;
 
@@ -25,7 +29,7 @@ export abstract class IQuery {
 export abstract class IMutation {
     abstract addProductor(nombre: string, localidad?: Nullable<string>, descripcionBreve?: Nullable<string>): Nullable<Productor> | Promise<Nullable<Productor>>;
 
-    abstract deleteProductor(id: string): string | Promise<string>;
+    abstract deleteProductor(id: string): Nullable<DeleteProductorResponse> | Promise<Nullable<DeleteProductorResponse>>;
 
     abstract updateProductor(id: string, nombre?: Nullable<string>, localidad?: Nullable<string>, descripcionBreve?: Nullable<string>): Nullable<Productor> | Promise<Nullable<Productor>>;
 

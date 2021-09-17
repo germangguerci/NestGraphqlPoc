@@ -7,6 +7,10 @@ type Productor {
   id: ID!
 }
 
+type DeleteProductorResponse {
+  deleted: ID!
+}
+
 type Query {
   productores: [Productor]!
   productor(id: ID!): Productor
@@ -19,7 +23,7 @@ type Mutation {
     descripcionBreve: String
   ): Productor
 
-  deleteProductor(id: ID!): String!
+  deleteProductor(id: ID!): DeleteProductorResponse
 
   updateProductor(
     id: ID!

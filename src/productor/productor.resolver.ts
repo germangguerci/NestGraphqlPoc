@@ -1,7 +1,7 @@
 import { ProductorService } from './productor.service';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Productor } from 'src/graphql';
-import { CreateProductorDto } from './dto/create-productor.dto';
+import { CreateProductorDto, UpdateProductorDto } from './dto/productor.dto';
 
 @Resolver('Productor')
 export class ProductorResolver {
@@ -23,5 +23,15 @@ export class ProductorResolver {
   @Mutation('addProductor')
   async create(@Args() args: CreateProductorDto): Promise<Productor> {
     return this.productorService.create(args);
+  }
+
+  @Mutation('updateProductor')
+  async update(@Args() args: UpdateProductorDto): Promise<Productor> {
+    return this.productorService.update(args);
+  }
+
+  @Mutation('deleteProductor')
+  async delete(@Args('id') id: string) {
+    return this.productorService.delete(id);
   }
 }
