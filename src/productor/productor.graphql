@@ -1,0 +1,32 @@
+type Productor {
+  nombre: String!
+  localidad: String
+  descripcionBreve: String
+  createdAt: String
+  updatedAt: String
+  id: ID!
+}
+
+type Query {
+  productores: [Productor]!
+  productor(id: ID!): Productor
+}
+
+type Mutation {
+  addProductor(
+    nombre: String!
+    localidad: String
+    descripcionBreve: String
+  ): Productor
+
+  deleteProductor(id: ID!): String!
+
+  updateProductor(
+    id: ID!
+    nombre: String
+    localidad: String
+    descripcionBreve: String
+  ): Productor
+
+  assignProductor(idProducto: ID!, idProductor: ID!): String
+}
