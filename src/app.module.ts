@@ -10,6 +10,10 @@ import { ProductorModule } from './productor/productor.module';
   imports: [
     ProductorModule,
     GraphQLModule.forRoot({
+      cors: {
+        origin: 'http://localhost:4200',
+        credentials: false,
+      },
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
